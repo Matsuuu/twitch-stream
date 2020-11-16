@@ -1,3 +1,6 @@
+// TODO: Create a chat component standalone
+// https://dev.twitch.tv/docs/embed/everything
+// Add the rest of the API attributes
 export default class TwitchStream extends HTMLElement {
     static get properties() {
         return {
