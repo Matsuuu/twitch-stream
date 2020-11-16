@@ -1,0 +1,26 @@
+{
+  "name": "twitch-stream",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "wds --node-resolve --app-index index.html --open --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Matsuuu/twitch-stream.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Matsuuu/twitch-stream/issues"
+  },
+  "homepage": "https://github.com/Matsuuu/twitch-stream#readme",
+  "dependencies": {
+    "@web/dev-server": "^0.0.21"
+  },
+  "devDependencies": {
+    "@simplr-wc/prettier-config": "^1.0.3"
+  },
+  "prettier": "@simplr-wc/prettier-config"
+}
