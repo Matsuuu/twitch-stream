@@ -7,6 +7,14 @@
         "start": "wds --node-resolve --watch --open"
     },
     "keywords": [],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Matsuuu/twitch-stream.git"
+    },
+    "bugs": {
+        "url": "https://github.com/Matsuuu/twitch-stream/issues"
+    },
+    "homepage": "https://github.com/Matsuuu/twitch-stream#readme",
     "author": "",
     "license": "ISC",
     "devDependencies": {
@@ -16,8 +24,6 @@
     },
     "prettier": "@simplr-wc/prettier-config",
     "eslintConfig": {
-        "extends": [
-            "@simplr-wc/eslint-config"
-        ]
+        "extends": ["@simplr-wc/eslint-config"]
     }
 }
