@@ -83,7 +83,8 @@ export default class TwitchStream extends HTMLElement {
         if (!window.Twitch) {
             await this.importTwitch();
         }
-        const embedElem = this.shadowRoot.querySelector('#twitch-embed');
+        await this.newFrame();
+        let embedElem = this.shadowRoot.querySelector('#twitch-embed');
         const embed = new Twitch.Embed(embedElem, {
             width: this.width,
             height: this.height,
@@ -113,8 +114,8 @@ export default class TwitchStream extends HTMLElement {
         // functionality is required
         const events = ['ENDED', 'PAUSE', 'PLAY', 'PLAYBACK_BLOCKED', 'PLAYING', 'OFFLINE', 'ONLINE', 'READY'];
         events.forEach(ev => {
-            this.embed.addEventListener(Twitch.Player[ev], () => {
-                this._handlePlayingState();
+            this.embed.addEventListener(Twitch.Player[ev], async () => {
+                await this._handlePlayingState(ev);
                 this.dispatchEvent(
                     new CustomEvent(`twitch-stream.${ev.toLowerCase()}`, { detail: { embed: this.embed } }),
                 );
@@ -122,17 +123,24 @@ export default class TwitchStream extends HTMLElement {
         });
     }
 
-    _handlePlayingState() {
-        window.requestAnimationFrame(() => {
-            const isPaused = this.embed.isPaused();
-            if (isPaused) {
-                this.setAttribute('paused', '');
-                this.removeAttribute('playing');
-            } else {
-                this.setAttribute('playing', '');
-                this.removeAttribute('paused');
-            }
-        });
+    async _handlePlayingState() {
+        await this.wait(50);
+        const isPaused = this.embed.isPaused();
+        if (isPaused) {
+            this.setAttribute('paused', '');
+            this.removeAttribute('playing');
+        } else {
+            this.setAttribute('playing', '');
+            this.removeAttribute('paused');
+        }
+    }
+
+    wait(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    newFrame() {
+        return new Promise(resolve => window.requestAnimationFrame(resolve));
     }
 
     _handleAttributeChange(attributeName) {

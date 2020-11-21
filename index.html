@@ -13,12 +13,188 @@
                 font-family: 'Roboto', sans-serif;
                 padding: 0;
                 margin: 0;
+                --dark-color: #0e0e10;
+                --light-dark-color: #18181b;
+                --text-color: #efeff1;
+
+                background: var(--dark-color);
+                color: var(--text-color);
+                font-size: 1.2rem;
+            }
+
+            body {
+                margin-bottom: 5rem;
+            }
+
+            .stream-container {
+                width: 80%;
+                margin: 5% auto 0;
+                color: inherit;
+            }
+
+            input {
+                color: inherit;
+                box-sizing: border-box;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                font-size: 1.2rem;
+                width: 100%;
+                margin-top: 3rem;
+                background: var(--light-dark-color);
+                padding: 1rem;
+            }
+
+            .disclaimer {
+                font-size: 1rem;
+                margin-top: 0.25rem;
+                color: #a970ff;
+            }
+
+            table {
+                background: var(--light-dark-color);
+                padding: 1rem 0;
+                width: 100%;
+                text-align: left;
+            }
+            thead th {
+                padding: 0.5rem 1rem;
+            }
+            tbody td {
+                padding: 0.5rem 1rem;
+            }
+
+            tr {
+                transition: 200ms ease-in-out;
+            }
+
+            tr:hover {
+                background: #26262c;
             }
         </style>
     </head>
 
     <body>
-        <twitch-stream channel="wardiii" muted></twitch-stream>
+        <div class="stream-container">
+            <h2>Twitch Stream Web Component</h2>
+            <div id="stream-area">
+                <twitch-stream channel="beyondthesummit" muted></twitch-stream>
+            </div>
+
+            <input type="text" />
+            <p class="disclaimer">Blur focus from input field to apply modification</p>
+            <h3>Attributes</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Channel</td>
+                        <td>String</td>
+                        <td>Any channel name on Twitch.tv</td>
+                    </tr>
+                    <tr>
+                        <td>Width</td>
+                        <td>String/Number</td>
+                        <td>Percentage or a Number</td>
+                    </tr>
+                    <tr>
+                        <td>Height</td>
+                        <td>String/Number</td>
+                        <td>Percentage or a Number</td>
+                    </tr>
+                    <tr>
+                        <td>Theme</td>
+                        <td>String</td>
+                        <td>dark / light</td>
+                    </tr>
+                    <tr>
+                        <td>Muted</td>
+                        <td>Boolean</td>
+                        <td>Add the "muted" attribute to start stream muted</td>
+                    </tr>
+                    <tr>
+                        <td>Autoplay</td>
+                        <td>Boolean</td>
+                        <td>Add 'autoplay="false"' to disable autoplay</td>
+                    </tr>
+                    <tr>
+                        <td>Chat</td>
+                        <td>Boolean</td>
+                        <td>Add the "chat" attribute to show chat next to the stream</td>
+                    </tr>
+                    <tr>
+                        <td>Allowfullscreen</td>
+                        <td>Boolean</td>
+                        <td>Add 'allowfullscreen="false"' to disallow fullsreen viewing</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>API</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Parameters</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>getPlayer()</td>
+                        <td></td>
+                        <td>Returns the Player instance</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
         <script src="src/twitch-stream.js" type="module"></script>
+
+        <script>
+            const codeBlock = document.querySelector('input[type="text"]');
+            const streamComponent = document.querySelector('twitch-stream');
+            const streamArea = document.querySelector('#stream-area');
+
+            function escapeHTML(htmlContent) {
+                return htmlContent.replace(/=""/g, '');
+                /*.replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#039;');*/
+            }
+
+            function updateCodeblock() {
+                codeBlock.value = escapeHTML(streamComponent.outerHTML);
+            }
+
+            const eventSuffixes = [
+                'ENDED',
+                'PAUSE',
+                'PLAY',
+                'PLAYBACK_BLOCKED',
+                'PLAYING',
+                'OFFLINE',
+                'ONLINE',
+                'READY',
+            ];
+            eventSuffixes.forEach(ev => {
+                streamComponent.addEventListener(`twitch-stream.${ev.toLowerCase()}`, () => {
+                    updateCodeblock();
+                });
+            });
+
+            codeBlock.addEventListener('blur', () => {
+                streamArea.innerHTML = codeBlock.value;
+            });
+            updateCodeblock();
+        </script>
     </body>
 </html>
