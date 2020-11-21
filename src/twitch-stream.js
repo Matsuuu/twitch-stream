@@ -1,9 +1,9 @@
-// TODO: Create a chat component standalone
-// https://dev.twitch.tv/docs/embed/everything
-// Add the rest of the API attributes
 export default class TwitchStream extends HTMLElement {
-    static get properties() {
+    static TWITCH_EMBED_URL = 'https://embed.twitch.tv/embed/v1.js';
+    static get attributes() {
         return {
+            title: { default: 'Simplr HTML Element Template' },
+            subtitle: { default: 'Made with 💖 by the Simplr bois' },
             channel: {},
             width: { default: 940 },
             height: { default: 480 },
@@ -16,13 +16,19 @@ export default class TwitchStream extends HTMLElement {
 
     constructor() {
         super();
-        this.setDefaults();
         this.attachShadow({ mode: 'open' });
-        this.shadowRoot.appendChild(TwitchStream.template.content.cloneNode(true));
     }
 
     connectedCallback() {
+        this.setDefaults();
         this.initializeTwitchEmbed();
+        this.render();
+    }
+
+    render() {
+        const content = TwitchStream.template.content.cloneNode(true);
+        this.shadowRoot.innerHTML = '';
+        this.shadowRoot.appendChild(content);
     }
 
     async initializeTwitchEmbed() {
@@ -71,28 +77,38 @@ export default class TwitchStream extends HTMLElement {
         `;
     }
 
+    requestRender() {
+        if (this._requestRenderCalled) return;
+
+        this._requestRenderCalled = true;
+        window.requestAnimationFrame(() => {
+            this.render();
+            this._requestRenderCalled = false;
+        });
+    }
+
     setDefaults() {
-        const props = TwitchStream.properties;
-        Object.keys(props).forEach(prop => {
-            this[prop] = props[prop].default;
+        const attributes = TwitchStream.attributes;
+        Object.keys(attributes).forEach(attr => {
+            if (!this[attr]) {
+                this[attr] = attributes[attr].default;
+            }
         });
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
-        if (TwitchStream.properties[name].noreflect) return; // Let's see if we even need this
         if (oldValue === newValue) return;
 
         this[name] = newValue === '' ? true : newValue;
+        this.requestRender();
     }
 
     static get observedAttributes() {
-        const props = TwitchStream.properties;
-        return Object.keys(props).filter(prop => {
-            return typeof props[prop].watch === 'undefined' || props[prop].watch;
+        const attributes = TwitchStream.attributes;
+        return Object.keys(attributes).filter(attr => {
+            return typeof attributes[attr].watch === 'undefined' || attributes[attr].watch;
         });
     }
-
-    static TWITCH_EMBED_URL = 'https://embed.twitch.tv/embed/v1.js';
 }
 
 if (!customElements.get('twitch-stream')) {
