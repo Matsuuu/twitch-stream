@@ -24,6 +24,8 @@
     },
     "prettier": "@simplr-wc/prettier-config",
     "eslintConfig": {
-        "extends": ["@simplr-wc/eslint-config"]
+        "extends": [
+            "@simplr-wc/eslint-config"
+        ]
     }
 }
