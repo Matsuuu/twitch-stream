@@ -32,16 +32,17 @@ npm install twitch-stream-embed
 
 ## Attributes
 
-| Name            | Type          | Options                                                     |
-| --------------- | ------------- | ----------------------------------------------------------- |
-| Channel         | String        | Any channel name on Twitch.tv                               |
-| Width           | String/Number | Percentage or a Number                                      |
-| Height          | String/Number | Percentage or a Number                                      |
-| Theme           | String        | dark / light                                                |
-| Muted           | Boolean       | Add the "muted" attribute to start stream muted             |
-| Autoplay        | Boolean       | Add 'autoplay="false"' to disable autoplay                  |
-| Chat            | Boolean       | Add the "chat" attribute to show chat next to the stream    |
-| Allowfullscreen | Boolean       | Add 'allowfullscreen="false"' to disallow fullsreen viewing |
+| Name            | Type          | Options                                                                                                                             |
+| --------------- | ------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| Channel         | String        | Any channel name on Twitch.tv                                                                                                       |
+| Width           | String/Number | Percentage or a Number                                                                                                              |
+| Height          | String/Number | Percentage or a Number                                                                                                              |
+| Theme           | String        | dark / light                                                                                                                        |
+| Muted           | Boolean       | Add the "muted" attribute to start stream muted                                                                                     |
+| Autoplay        | Boolean       | Add 'autoplay="false"' to disable autoplay                                                                                          |
+| Chat            | Boolean       | Add the "chat" attribute to show chat next to the stream                                                                            |
+| Allowfullscreen | Boolean       | Add 'allowfullscreen="false"' to disallow fullsreen viewing                                                                         |
+| Parent          | String        | Only required if your site is embedded on any domain(s) other than the one that instantiates the Twitch Embed e.g. "codesandbox.io" |
 
 ## API
 
