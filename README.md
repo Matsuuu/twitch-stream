@@ -25,7 +25,7 @@ npm install twitch-stream-embed
 ```
 
 ```html
-<twitch-stream channel="ESL_SC2"></twitch-stream>
+<twitch-stream channel="ESL_SC2" chat muted></twitch-stream>
 ```
 
 ## Attributes
