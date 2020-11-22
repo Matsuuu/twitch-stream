@@ -10,6 +10,7 @@ export default class TwitchStream extends HTMLElement {
             autoplay: { default: true },
             chat: { default: false },
             allowfullscreen: { default: true },
+            parent: { default: '' },
         };
     }
 
@@ -94,6 +95,7 @@ export default class TwitchStream extends HTMLElement {
             autoplay: this.autoplay,
             layout: this.chat ? 'video-with-chat' : 'video',
             allowfullscreen: this.allowfullscreen,
+            parent: this.parent,
         });
         this.embed = embed;
 

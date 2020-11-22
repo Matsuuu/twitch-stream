@@ -4,6 +4,8 @@
 
 TwitchStream is a Web Component for embedding a Twitch Stream onto any web site with just 2 lines of HTML.
 
+Check out a Demo [here](https://matsuuu.github.io/twitch-stream/)
+
 ## Installation
 
 ### npm
