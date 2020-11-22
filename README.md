@@ -8,7 +8,7 @@ Check out a Demo [here](https://matsuuu.github.io/twitch-stream/)
 
 ## Installation
 
-### npm
+### NPM
 
 ```bash
 npm install twitch-stream-embed
@@ -17,16 +17,24 @@ npm install twitch-stream-embed
 ### CDN
 
 ```html
-<script type="module" src="TBA"></script>
+<script type="module" src="https://unpkg.com/twitch-stream-embed"></script>
 ```
 
 ## Usage
 
-```html
-<twitch-stream></twitch-stream>
+### With NPM
+
+```javascript
+import 'twitch-stream-embed';
+
+<twitch-stream channel="ESL_SC2"></twitch-stream>;
 ```
 
+### With CDN
+
 ```html
+<script type="module" src="https://unpkg.com/twitch-stream-embed"></script>
+
 <twitch-stream channel="ESL_SC2" chat muted></twitch-stream>
 ```
 
