@@ -59,10 +59,10 @@
                 text-align: left;
             }
             thead th {
-                padding: 0.5rem 1rem;
+                padding: 1rem;
             }
             tbody td {
-                padding: 0.5rem 1rem;
+                padding: 1rem;
             }
 
             tr {
@@ -79,7 +79,7 @@
         <div class="stream-container">
             <h2>Twitch Stream Web Component</h2>
             <div id="stream-area">
-                <twitch-stream channel="beyondthesummit" muted></twitch-stream>
+                <twitch-stream width="100%" channel="beyondthesummit" muted></twitch-stream>
             </div>
 
             <input type="text" />
@@ -152,6 +152,56 @@
                         <td></td>
                         <td>Returns the Player instance</td>
                     </tr>
+                    <tr>
+                        <td>play()</td>
+                        <td></td>
+                        <td>Resume / Start the stream</td>
+                    </tr>
+                    <tr>
+                        <td>pause()</td>
+                        <td></td>
+                        <td>Pause the stream</td>
+                    </tr>
+                    <tr>
+                        <td>getChannel()</td>
+                        <td></td>
+                        <td>Get the name of the channel currently being streamed</td>
+                    </tr>
+                    <tr>
+                        <td>setChannel(channel)</td>
+                        <td>channel: Name of the channel</td>
+                        <td>Set the active stream component to given channel</td>
+                    </tr>
+                    <tr>
+                        <td>getQualities()</td>
+                        <td></td>
+                        <td>Get the available video qualities for the stream</td>
+                    </tr>
+                    <tr>
+                        <td>setQuality(quality)</td>
+                        <td>quality: String containing the quality identifier. e.g. "360p"</td>
+                        <td>Set the stream quality to given quality</td>
+                    </tr>
+                    <tr>
+                        <td>getMuted()</td>
+                        <td></td>
+                        <td>Get the muted status of the active stream</td>
+                    </tr>
+                    <tr>
+                        <td>setMuted(isMuted)</td>
+                        <td>isMuted: Boolean, if the stream should be muted or not</td>
+                        <td>Set the muted status to given value (true/false)</td>
+                    </tr>
+                    <tr>
+                        <td>getVolume()</td>
+                        <td></td>
+                        <td>Get the current volume of the stream</td>
+                    </tr>
+                    <tr>
+                        <td>setVolume(volume)</td>
+                        <td>volume: A float value between 0.0 and 1.0</td>
+                        <td>Set the current volume of the stream</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -172,7 +222,8 @@
             }
 
             function updateCodeblock() {
-                codeBlock.value = escapeHTML(streamComponent.outerHTML);
+                const escaped = escapeHTML(streamComponent.outerHTML);
+                codeBlock.value = escaped;
             }
 
             const eventSuffixes = [
