@@ -13,7 +13,7 @@
                 font-family: 'Roboto', sans-serif;
                 padding: 0;
                 margin: 0;
-                --dark-color: #0e0e10;
+                --dark-color: #151517;
                 --light-dark-color: #18181b;
                 --text-color: #efeff1;
 
@@ -72,14 +72,19 @@
             tr:hover {
                 background: #26262c;
             }
+
+            img {
+                width: 100%;
+            }
         </style>
     </head>
 
     <body>
         <div class="stream-container">
-            <h2>Twitch Stream Web Component</h2>
+            <img src="twitch-stream.png" />
+            <h2>A Twitch Stream Web Component</h2>
             <div id="stream-area">
-                <twitch-stream width="100%" channel="beyondthesummit" muted></twitch-stream>
+                <twitch-stream width="100%" channel="ESL_SC2" muted></twitch-stream>
             </div>
 
             <input type="text" />
