@@ -172,7 +172,7 @@ export default class TwitchStream extends HTMLElement {
 
     static get template() {
         const template = document.createElement('template');
-        template.innerHTML = `<div id="twitch-embed"></div>`;
+        template.innerHTML = `<div id="twitch-embed" style="height: 100%"></div>`;
         return template;
     }
 
