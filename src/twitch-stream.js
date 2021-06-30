@@ -1,4 +1,4 @@
-export default class TwitchStream extends HTMLElement {
+export class TwitchStream extends HTMLElement {
     static TWITCH_EMBED_URL = 'https://embed.twitch.tv/embed/v1.js';
     static get attributes() {
         return {

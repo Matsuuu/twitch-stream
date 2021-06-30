@@ -1,0 +1,187 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "src/twitch-stream.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "TwitchStream",
+          "members": [
+            {
+              "kind": "field",
+              "name": "TWITCH_EMBED_URL",
+              "static": true,
+              "default": "'https://embed.twitch.tv/embed/v1.js'"
+            },
+            {
+              "kind": "field",
+              "name": "attributes",
+              "static": true
+            },
+            {
+              "kind": "method",
+              "name": "getPlayer"
+            },
+            {
+              "kind": "method",
+              "name": "play"
+            },
+            {
+              "kind": "method",
+              "name": "pause"
+            },
+            {
+              "kind": "method",
+              "name": "getChannel"
+            },
+            {
+              "kind": "method",
+              "name": "setChannel",
+              "parameters": [
+                {
+                  "name": "channel"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getQualities"
+            },
+            {
+              "kind": "method",
+              "name": "setQuality",
+              "parameters": [
+                {
+                  "name": "quality"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getMuted"
+            },
+            {
+              "kind": "method",
+              "name": "setMuted",
+              "parameters": [
+                {
+                  "name": "muted"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getVolume"
+            },
+            {
+              "kind": "method",
+              "name": "setVolume",
+              "parameters": [
+                {
+                  "name": "volume"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "initializeTwitchEmbed"
+            },
+            {
+              "kind": "method",
+              "name": "_setEmbedListeners"
+            },
+            {
+              "kind": "method",
+              "name": "_handlePlayingState"
+            },
+            {
+              "kind": "method",
+              "name": "wait",
+              "parameters": [
+                {
+                  "name": "ms"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "newFrame"
+            },
+            {
+              "kind": "method",
+              "name": "_handleAttributeChange",
+              "parameters": [
+                {
+                  "name": "attributeName"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "importTwitch"
+            },
+            {
+              "kind": "method",
+              "name": "render"
+            },
+            {
+              "kind": "field",
+              "name": "template",
+              "static": true
+            },
+            {
+              "kind": "method",
+              "name": "setDefaults"
+            }
+          ],
+          "events": [
+            {
+              "name": "twitch-stream.video.ready",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "twitch-stream.video.play",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "twitch-stream",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "TwitchStream",
+          "declaration": {
+            "name": "TwitchStream",
+            "module": "src/twitch-stream.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "twitch-stream",
+          "declaration": {
+            "name": "TwitchStream",
+            "module": "src/twitch-stream.js"
+          }
+        }
+      ]
+    }
+  ]
+}
