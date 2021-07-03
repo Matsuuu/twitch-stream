@@ -1,10 +1,11 @@
 {
   "name": "twitch-stream-embed",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "A Web Component for easily embedding a Twitch.tv livestream to any website",
   "main": "src/twitch-stream.js",
   "files": [
-    "src/twitch-stream.js"
+    "src/twitch-stream.js",
+    "custom-elements.json"
   ],
   "scripts": {
     "start": "wds --node-resolve --watch --open",
